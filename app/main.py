@@ -82,12 +82,12 @@ class Battleship:
                     if neighbour in other_ships:
                         raise ValueError("The ships must not be adjacent.")
 
-        total_deck_size = 0
+        deck_size = []
         for ship in ships:
-            total_deck_size += (
+            deck_size.append(
                 (ship[1][0] - ship[0][0]) + (ship[1][1] - ship[0][1]) + 1
             )
-        if total_deck_size != 20:
+        if sorted(deck_size) != [1, 1, 1, 1, 2, 2, 2, 3, 3, 4]:
             raise ValueError("Wrong ship size configuration.")
 
     def fire(self, location: tuple) -> str:
